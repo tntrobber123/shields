@@ -32,11 +32,12 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     level.move = "up"
-                    level.amount -= 1
+                    level.amount = 5
+                    level.jump()
                 elif event.key == pygame.K_a:
                     player.move = "left"
                     level.move = "left"
-                    level.amount -= 1
+                    level.amount += 1
                 elif event.key == pygame.K_d:
                     player.move = "right"
                     level.move = "right"
@@ -44,11 +45,11 @@ def main():
                 	
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
-                    level.amount += 1
-                elif event.key == pygame.K_a:
-                    level.amount += 1
-                elif event.key == pygame.K_d:
                     level.amount -= 1
+                elif event.key == pygame.K_a:
+                    level.amount = 0
+                elif event.key == pygame.K_d:
+                	level.amount = 0
                 
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
