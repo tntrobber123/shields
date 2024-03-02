@@ -5,6 +5,9 @@ import math
 from window import Window
 window = Window()
 
+from player import Player
+player = Player()
+
 def main():
     
     RED = (255, 0, 0)
@@ -19,26 +22,36 @@ def main():
             if event.type == exit:
                 pygame.quit()
                 quit()
-                
+
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    pass
-                if event.key == pygame.K_RIGHT:
-                    pass
-                if event.key == pygame.K_UP:
-                    pass
-                if event.key == pygame.K_DOWN:
-                    pass
+                if event.key == pygame.K_w:
+                    player.move = "up"
+                    player.amount += 2
+                if event.key == pygame.K_s:
+                    player.move = "down"
+                    player.amount += 2
+                if event.key == pygame.K_a:
+                    player.move = "left"
+                    player.amount += 2
+                if event.key == pygame.K_d:
+                    player.move = "right"
+                    player.amount += 2
                     
                 if event.key == pygame.K_SPACE:
-                	pass
+                    pass
+                	
+            if event.type == pygame.KEYUP:
+                player.move = "null"
+                player.amount -= 2
                     
                 if event.key == pygame.K_ESCAPE:
-                	pygame.quit()
-                	quit()
+                    pygame.quit()
+                    quit()
         
+        player.movement()
+        	
         window.fill(WHITE, window.screen)
-        
+        player.draw()
         pygame.display.flip()
 
 main()
