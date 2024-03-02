@@ -8,6 +8,9 @@ window = Window()
 from player import Player
 player = Player()
 
+from level import Level
+level = Level()
+
 def main():
     
     RED = (255, 0, 0)
@@ -26,32 +29,43 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     player.move = "up"
-                    player.amount += 2
+                    player.amount += 1
                 if event.key == pygame.K_s:
                     player.move = "down"
-                    player.amount += 2
+                    player.amount += 1
                 if event.key == pygame.K_a:
                     player.move = "left"
-                    player.amount += 2
+                    player.amount += 1
                 if event.key == pygame.K_d:
                     player.move = "right"
-                    player.amount += 2
+                    player.amount += 1
                     
                 if event.key == pygame.K_SPACE:
                     pass
                 	
             if event.type == pygame.KEYUP:
-                player.move = "null"
-                player.amount -= 2
-                player.moving = False
-                    
+                if event.key == pygame.K_w:
+                    player.move = "null"
+                    player.amount -= 1
+                if event.key == pygame.K_s:
+                    player.move = "null"
+                    player.amount -= 1
+                if event.key == pygame.K_a:
+                    player.move = "null"
+                    player.amount -= 1
+                if event.key == pygame.K_d:
+                    player.move = "null"
+                    player.amount -= 1
+                
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     quit()
         
         player.movement()
-        	
+        
         window.fill(WHITE, window.screen)
+        
+        level.build()
         player.draw()
         pygame.display.flip()
 
