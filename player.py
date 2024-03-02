@@ -5,8 +5,8 @@ window = Window()
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
-        self.x = 300
-        self.y = 300
+        self.x = 645 - 32
+        self.y = 350 - 32
         self.direction = 0
         self.move = "null"
         self.amount = 0

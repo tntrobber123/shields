@@ -11,6 +11,9 @@ player = Player()
 from level import Level
 level = Level()
 
+from shield import Shield
+shield = Shield()
+
 def main():
     
     RED = (255, 0, 0)
@@ -65,8 +68,12 @@ def main():
         
         window.fill(WHITE, window.screen)
         
+        shield.mouse()
+        
         level.build()
         player.draw()
+        shield.draw()
+        
         pygame.display.flip()
 
 main()
