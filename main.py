@@ -31,44 +31,35 @@ def main():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
-                    player.move = "up"
-                    player.amount += 1
-                if event.key == pygame.K_s:
-                    player.move = "down"
-                    player.amount += 1
-                if event.key == pygame.K_a:
+                    level.move = "up"
+                    level.amount -= 1
+                elif event.key == pygame.K_a:
                     player.move = "left"
-                    player.amount += 1
-                if event.key == pygame.K_d:
+                    level.move = "left"
+                    level.amount -= 1
+                elif event.key == pygame.K_d:
                     player.move = "right"
-                    player.amount += 1
-                    
-                if event.key == pygame.K_SPACE:
-                    pass
+                    level.move = "right"
+                    level.amount += 1
                 	
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
-                    player.move = "null"
-                    player.amount -= 1
-                if event.key == pygame.K_s:
-                    player.move = "null"
-                    player.amount -= 1
-                if event.key == pygame.K_a:
-                    player.move = "null"
-                    player.amount -= 1
-                if event.key == pygame.K_d:
-                    player.move = "null"
-                    player.amount -= 1
+                    level.amount += 1
+                elif event.key == pygame.K_a:
+                    level.amount += 1
+                elif event.key == pygame.K_d:
+                    level.amount -= 1
                 
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     quit()
         
         player.movement()
-        
-        window.fill(WHITE, window.screen)
-        
         shield.mouse()
+        
+        level.gravity()
+        
+        window.screen.fill(BLACK)
         
         level.build()
         player.draw()

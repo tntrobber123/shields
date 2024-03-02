@@ -5,24 +5,18 @@ window = Window()
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
+        super().__init__()
         self.x = 645 - 32
-        self.y = 350 - 32
-        self.direction = 0
+        self.y = 295
         self.move = "null"
-        self.amount = 0
         self.image = pygame.image.load("sprites/player.png")
-        
+        self.rect = self.image.get_rect()
+
     def movement(self):
-    	if self.move == "up":
-    		self.y -= self.amount
-    	elif self.move == "down":
-    		self.y += self.amount
-    	elif self.move == "left":
-    		self.x -= self.amount
-    		self.image = self.image = pygame.image.load("sprites/player_left.png")
-    	elif self.move == "right":
-    		self.x += self.amount
-    		self.image = pygame.image.load("sprites/player.png")
-    		
+        if self.move == "left":
+            self.image = pygame.image.load("sprites/player_left.png")
+        elif self.move == "right":
+            self.image = pygame.image.load("sprites/player.png")
+
     def draw(self):
-    	window.screen.blit(self.image, (self.x, self.y))
+        window.screen.blit(self.image, (self.x, self.y))
