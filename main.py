@@ -43,6 +43,7 @@ def main():
             if event.type == pygame.KEYUP:
                 player.move = "null"
                 player.amount -= 2
+                player.moving = False
                     
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()

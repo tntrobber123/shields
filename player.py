@@ -13,15 +13,14 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load("sprites/bricks.png")
         
     def movement(self):
-    	if self.direction != "null":
-    		if self.direction == "up":
-    			self.y += self.amount
-    		if self.direction == "down":
-    			self.y -= self.amount
-    		if self.direction == "left":
-    			self.x -= self.amount
-    		if self.direction == "right":
-    			self.x += self.amount
-    	
+    	if self.move == "up":
+    		self.y -= self.amount
+    	elif self.move == "down":
+    		self.y += self.amount
+    	elif self.move == "left":
+    		self.x -= self.amount
+    	elif self.move == "right":
+    		self.x += self.amount
+    		
     def draw(self):
     	window.screen.blit(self.image, (self.x, self.y))
