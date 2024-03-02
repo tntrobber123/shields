@@ -31,15 +31,14 @@ def main():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
-                    level.jump()
+                    player.go_up()
                 elif event.key == pygame.K_a:
-                    player.move = "left"
-                    level.move = "left"
-                    level.amount += 2
+                    player.go_left()
                 elif event.key == pygame.K_d:
-                    player.move = "right"
-                    level.move = "right"
-                    level.amount += 2
+                    player.go_right()
+                elif event.key == pygame.K_s:
+                	player.go_down()
+                    
                 	
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
@@ -51,15 +50,13 @@ def main():
                     pygame.quit()
                     quit()
         
-        player.movement()
+        player.update()
         shield.mouse()
+        level.update()
 
         window.screen.fill(BLACK)
         
-        level.collision(player.rect)
-        level.gravity()
-        
-        level.update()
+        level.draw()
         player.draw()
         shield.draw()
         
