@@ -56,12 +56,10 @@ def main():
         
         player.movement()
         shield.mouse()
-        
-        level.gravity()
-        
+
         window.screen.fill(BLACK)
         
-        level.build()
+        level.update()
         player.draw()
         shield.draw()
         
