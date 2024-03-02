@@ -18,8 +18,10 @@ class Level(pygame.sprite.Sprite):
         self.level_y = [500, 600, 700]
 
     def draw(self):
-        a = 50
+        a = 500
         b = 0
+        BLACK = (0, 0, 0)
+        window.screen.fill(BLACK)
         while a != 0:
             c = 20
             d = 0
@@ -27,9 +29,8 @@ class Level(pygame.sprite.Sprite):
                 window.screen.blit(self.background, (self.x + b, self.y + d))
                 c -= 1
                 d += 50
-                
             a -= 1
-            b += 50
+            b += 75
             
         a = len(self.level_x)
         while a > 0:

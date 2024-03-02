@@ -70,16 +70,18 @@ def main():
         
         if shield.angle >= -20 and shield.angle <= 20:
             shield.speed = True
-            if level.world_shiftx == 5:
-                level.world_shiftx = 13
-            if level.world_shiftx == -5:
-                level.world_shiftx = -13
+            level.world_shiftx *= 1.1
+            if level.world_shiftx > 30:
+                level.world_shiftx = 30
+                
+            if level.world_shiftx < -30:
+                level.world_shiftx = -30
         else:
             shield.speed = False
             
-            if level.world_shiftx == 13:
+            if level.world_shiftx > 20:
                 level.world_shiftx = 5
-            if level.world_shiftx == -13:
+            if level.world_shiftx > 20:
                 level.world_shiftx = -5
         
         player.handle_collision()
