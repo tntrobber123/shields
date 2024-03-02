@@ -11,15 +11,26 @@ class Level(pygame.sprite.Sprite):
         self.x = 0
         self.y = 0
         
-        self.background = pygame.image.load("sprites/background.png")
+        self.background = pygame.image.load("sprites/dark_bricks.png")
         self.bricks = pygame.image.load("sprites/bricks.png")
 
         self.level_x = [500, 500, 500]
         self.level_y = [500, 600, 700]
 
     def draw(self):
-        window.screen.blit(self.background, (self.x, self.y))
-        
+        a = 50
+        b = 0
+        while a != 0:
+            c = 20
+            d = 0
+            while c != 0:
+                window.screen.blit(self.background, (self.x + b, self.y + d))
+                c -= 1
+                d += 50
+                
+            a -= 1
+            b += 50
+            
         a = len(self.level_x)
         while a > 0:
             self.level_x[a - 1] += self.world_shiftx

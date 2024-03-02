@@ -42,7 +42,6 @@ def main():
                 elif event.key == pygame.K_s:
                 	player.direction = ("D")
                 	level.world_shifty = -5
-                    
                 	
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
@@ -61,11 +60,27 @@ def main():
                     level.world_shiftx = 0
                     level.world_shifty = 0
                     player.stop()
+                    
+                
                 	
                 
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     quit()
+        
+        if shield.angle >= -20 and shield.angle <= 20:
+            shield.speed = True
+            if level.world_shiftx == 5:
+                level.world_shiftx = 13
+            if level.world_shiftx == -5:
+                level.world_shiftx = -13
+        else:
+            shield.speed = False
+            
+            if level.world_shiftx == 13:
+                level.world_shiftx = 5
+            if level.world_shiftx == -13:
+                level.world_shiftx = -5
         
         player.handle_collision()
         
