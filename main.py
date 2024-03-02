@@ -32,13 +32,17 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     player.direction = ("U")
-                    level.world_shifty = 3
+                    level.world_shifty = 5
                 elif event.key == pygame.K_a:
                     player.direction = ("L")
-                    level.world_shiftx = 3
+                    level.world_shiftx = 5
                 elif event.key == pygame.K_d:
                     player.direction = ("R")
-                    level.world_shiftx = -3
+                    level.world_shiftx = -5
+                elif event.key == pygame.K_s:
+                	player.direction = ("D")
+                	level.world_shifty = -5
+                    
                 	
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:

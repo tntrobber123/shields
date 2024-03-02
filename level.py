@@ -19,11 +19,16 @@ class Level(pygame.sprite.Sprite):
 
     def draw(self):
         window.screen.blit(self.background, (self.x, self.y))
+        
+        a = len(self.level_x)
+        while a > 0:
+            self.level_x[a - 1] += self.world_shiftx
+            self.level_y[a - 1] += self.world_shifty
+            a -= 1
 
         for x, y in zip(self.level_x, self.level_y):
             window.screen.blit(self.bricks, (x, y))
     
     def update(self):
-        print(self.world_shiftx)
         self.x += self.world_shiftx
         self.y += self.world_shifty
