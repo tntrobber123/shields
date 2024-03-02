@@ -31,34 +31,48 @@ def main():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
-                    player.go_up()
+                    player.direction = ("U")
+                    level.world_shifty = 3
                 elif event.key == pygame.K_a:
-                    player.go_left()
+                    player.direction = ("L")
+                    level.world_shiftx = 3
                 elif event.key == pygame.K_d:
-                    player.go_right()
-                elif event.key == pygame.K_s:
-                	player.go_down()
-                    
+                    player.direction = ("R")
+                    level.world_shiftx = -3
                 	
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_a:
-                    level.amount = 0
-                if event.key == pygame.K_d:
-                	level.amount = 0
+                if event.key == pygame.K_w:
+                    level.world_shiftx = 0
+                    level.world_shifty = 0
+                    player.stop()
+                elif event.key == pygame.K_a:
+                    level.world_shiftx = 0
+                    level.world_shifty = 0
+                    player.stop()
+                elif event.key == pygame.K_d:
+                    level.world_shiftx = 0
+                    level.world_shifty = 0
+                    player.stop()
+                elif event.key == pygame.K_s:
+                    level.world_shiftx = 0
+                    level.world_shifty = 0
+                    player.stop()
+                	
                 
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     quit()
         
+        player.handle_collision()
+        
+        player.move(player.direction)
         player.update()
         shield.mouse()
-        level.update()
-
-        window.screen.fill(BLACK)
         
+        level.update()
         level.draw()
-        player.draw()
         shield.draw()
+        player.draw()
         
         pygame.display.flip()
 
