@@ -15,13 +15,19 @@ class Shield(pygame.sprite.Sprite):
 		
 	def mouse(self):
 		self.mouse_x, self.mouse_y = pygame.mouse.get_pos()
-		self.dist_x = (math.fabs(self.mouse_x-645))
-		self.dist_y = (math.fabs(self.mouse_y-350))
-		print(self.dist_x)
-		print(self.dist_y)
+		self.dist_x = self.mid_x - math.fabs(self.mouse_x)
+		self.dist_y = self.mid_y - math.fabs(self.mouse_y)
 		
-		angle = math.tan(self.dist_y/self.dist_x)
+		print(self.dist_x)
+		
+		#print(self.dist_y/self.dist_x)
+		
+		if self.dist_x == 0:
+			self.dist_x = 1
+			
+		angle = -math.degrees(math.atan(self.dist_y/self.dist_x))
 		self.new_image = pygame.transform.rotate(self.image, angle)
+		print(angle)
 		
 	
 	def draw(self):
