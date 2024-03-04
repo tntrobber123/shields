@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.speed = 3
 
         self.direction = "D"
-        self.image = pygame.image.load('sprites/player.png')
+        self.image = pygame.image.load('sprites/player_cube.png')
         self.rect = self.image.get_rect()
 
     def update(self):
@@ -32,11 +32,11 @@ class Player(pygame.sprite.Sprite):
         self.handle_collision()
         
         if self.direction == "R":
-            self.image = pygame.image.load('sprites/player.png')
+            self.image = pygame.image.load('sprites/player_cube.png')
             level.world_shiftx = 3
         
         if self.direction == "L":
-            self.image = pygame.image.load('sprites/player_left.png')
+            self.image = pygame.image.load('sprites/player_cube_left.png')
             level.world_shiftx = -3
         
     def handle_collision(self):
